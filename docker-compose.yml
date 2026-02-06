@@ -1,0 +1,47 @@
+# docker-compose.yml (Postgres + Node)
+services:
+  db_sql:
+    image: postgres:16
+    container_name: app-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: app
+      POSTGRES_USER: appuser
+      POSTGRES_PASSWORD: apppass
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U appuser -d app"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  api:
+    build: ./smsserver
+    container_name: smsserver-api
+    restart: unless-stopped
+    depends_on:
+      db_sql:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+      DATABASE_URL: postgres://appuser:apppass@db_sql:5432/app
+    ports:
+      - "4000:4000"
+    # remove volumes for production, use only for development
+    volumes:
+      - ./smsserver:/usr/src/app
+
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - "4001:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@test.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+
+volumes:
+  db_data:

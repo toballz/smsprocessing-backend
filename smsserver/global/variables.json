@@ -1,0 +1,12 @@
+{
+    "site": {
+        "api_version": "1.0.0",
+        "email_contact": "site_email_contact",
+        "assetUrl": "127.0.0.1:2005/",
+        "logo": "/static_page/logo.png",
+        "tac": "/static_page/termsncondition.php",
+        "privacy": "/static_page/privacy.php",
+        "androidBunresolve": "/static_page/generated/index.android.bundle",
+        "iosBunresolve": "/static_page/generated/main.jsbundle"
+    }
+}
