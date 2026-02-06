@@ -34,6 +34,14 @@ core_router.post('/:action', async (req, res) => {
             return res.json(messages);
 
 
+        case 'pushaddNewMessage':
+            const phonenumber = req.body?.phonenumber;
+            const country = req.body?.country;
+            const shortcountry = req.body?.shortcountry;
+            const countryphonecode = req.body?.countryphonecode;
+            const message = req.body?.message;
+            const adt = await pushConversation(phonenumber, country, shortcountry, countryphonecode, message);
+            return res.json(adt);
         case 'pushUpdateSent':
             const aids = req.body?.aids;
             const status = req.body?.status;
