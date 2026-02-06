@@ -32,8 +32,8 @@ services:
     ports:
       - "4000:4000"
     # remove volumes for production, use only for development
-    volumes:
-      - ./smsserver:/usr/src/app
+    #volumes:
+    #  - ./smsserver:/usr/src/app
 
   pgadmin:
     image: dpage/pgadmin4

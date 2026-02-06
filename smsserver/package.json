@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --ext js,json,ts startserver.js"
+    "start-dev": "nodemon --ext js,json,ts startserver.js",
+    "start-prod": "node startserver.js"
   },
   "keywords": [],
   "author": "",
