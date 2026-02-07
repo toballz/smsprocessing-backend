@@ -4,6 +4,7 @@ import crypto from 'crypto';
 
 import getMessagesLists from './core/getMessagesLists.js';
 import pushConversation from './core/pushMessagesIds.js';
+import pushNewMessage from './core/pushNewMessage.js';
 
 const core_router = express.Router();
 core_router.post('/:action', async (req, res) => {
@@ -40,7 +41,7 @@ core_router.post('/:action', async (req, res) => {
             const shortcountry = req.body?.shortcountry;
             const countryphonecode = req.body?.countryphonecode;
             const message = req.body?.message;
-            const adt = await pushConversation(phonenumber, country, shortcountry, countryphonecode, message);
+            const adt = await pushNewMessage(phonenumber, country, shortcountry, countryphonecode, message);
             return res.json(adt);
         case 'pushUpdateSent':
             const aids = req.body?.aids;

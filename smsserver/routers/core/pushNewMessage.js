@@ -1,7 +1,7 @@
 import db_pool from "../../global/database.js";
 
 // @ts-ignore
-export default async function pushConversation(phonenumber, country, shortcountry, countryphonecode, message) {
+export default async function pushNewMessage(phonenumber, country, shortcountry, countryphonecode, message) {
     const response = {
         code: 404,
         message: "no message sent.",
