@@ -13,7 +13,6 @@ CREATE TABLE IF NOT EXISTS public.textmessages
     status textmessage_status DEFAULT 'pending'::textmessage_status,
     created_at timestamp without time zone DEFAULT now(),
     updated_on timestamp without time zone DEFAULT now(),
-    updated_comment text COLLATE pg_catalog."default",
     CONSTRAINT textmessages_pkey PRIMARY KEY (id_ai)
 )
 
