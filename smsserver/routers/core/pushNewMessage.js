@@ -9,13 +9,7 @@ function acceptOnlyCountryCodes(numberCode) {
 
 
 
-export default async function pushNewMessage(
-    phoneNumberInput,
-    country,
-    shortcountry,
-    countryphonecode,
-    message
-) {
+export default async function pushNewMessage(phoneNumberInput, country, shortcountry, countryphonecode, message) {
     const response = { code: 200, message: "Message sent." }
 
     try {
@@ -51,7 +45,7 @@ export default async function pushNewMessage(
 
         // 4. Parse and validate
         const parsed = parsePhoneNumberFromString(fullNumber, 'US')
-        if (!parsed?.isValid() ) {
+        if (!parsed?.isValid()) {
             response.code = 400
             response.message = "Parse error: Invalid phone number format"
             return response
